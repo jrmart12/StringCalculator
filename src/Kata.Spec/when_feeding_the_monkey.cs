@@ -31,6 +31,21 @@ namespace Kata.Spec
         static int _result;
     }
 
+    public class returnSameNumber
+    {
+        Establish _context = () =>
+        {
+            _systemUnderTest = new Calculator();
+        };
+
+        Because of = () => { _result = _systemUnderTest.Add("1"); };
+
+        It should_return_same_number = () => { _result.Should().Be(1); };
+        private static Calculator _systemUnderTest;
+        private static int _result;
+    }
+
+
     // Given the user input is empty when calculating the sum then it should return zero.
     // Given the user input is one number when calculating the sum then it should return the same number. (example "3" should equal 3)
     // Given the user input is two numbers when calculating the sum then it should return the sum of those numbers. (example "1,2" should equal 3)
