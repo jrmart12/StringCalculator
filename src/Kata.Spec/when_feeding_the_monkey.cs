@@ -45,9 +45,19 @@ namespace Kata.Spec
         private static int _result;
     }
 
+    public class when_summing_two_numbers
+    {
+        Establish _context = () =>
+        {
+            _systemUnderTest = new Calculator();
+        };
 
-    // Given the user input is empty when calculating the sum then it should return zero.
-    // Given the user input is one number when calculating the sum then it should return the same number. (example "3" should equal 3)
+        Because of = () => { _result = _systemUnderTest.Add("1,2"); };
+
+        It should_return_the_sum_of_both = () => { _result.Should().Be(3); };
+        static Calculator _systemUnderTest;
+        static int _result;
+    }
     // Given the user input is two numbers when calculating the sum then it should return the sum of those numbers. (example "1,2" should equal 3)
     // Given the user input is an unknown amount of numbers when calculating the sum then it should return the sum of all the numbers. (example "1,2,3" should equal 6)
     // Given the user input is multiple numbers with new line and comma delimiters when calculating the sum then it should return the sum of all the numbers. (example "1\n2,3" should equal 6)
